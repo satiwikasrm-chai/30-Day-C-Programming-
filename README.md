@@ -2,9 +2,9 @@
 
 This repository contains C programming exercises and projects.
 
-## Project 01: Marks Calculator
+## Challenge 01: Student Marks Calculator
 
-`Project01.c` reads marks for five subjects and displays:
+`Challenge-01.c` reads marks for five subjects and displays:
 
 - Total marks
 - Average marks
@@ -13,6 +13,6 @@ This repository contains C programming exercises and projects.
 ### Build and Run
 
 ```bash
-gcc Project01.c -o Project01
-./Project01
+gcc Challenge-01.c -o Challenge-01
+./Challenge-01
 ```
