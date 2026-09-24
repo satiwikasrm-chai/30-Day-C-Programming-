@@ -17,12 +17,12 @@ int main(void)
     scanf("%f", &mark5);
 
     total = mark1 + mark2 + mark3 + mark4 + mark5;
-    average = total / 5.0f;
-    percentage = (total / 500.0f) * 100.0f;
+    average = total / 5.0;
+    percentage = (total / 500.0) * 100.0;
 
-    printf("Total Marks = %.2f\n", total);
-    printf("Average Marks = %.2f\n", average);
-    printf("Percentage = %.2f%%\n", percentage);
+    printf("Total Marks = %f\n", total);
+    printf("Average Marks = %f\n", average);
+    printf("Percentage = %f\n", percentage);
 
     return 0;
 }
