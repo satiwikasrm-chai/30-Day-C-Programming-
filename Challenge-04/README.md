@@ -19,6 +19,34 @@ Read a daily budget and a positive number of expenses. Calculate the total, aver
 9. Compare the total with the budget and display the excess, remaining budget, or an exact-budget message.
 10. Stop.
 
+## Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[/Read daily budget/]
+    B --> C{Budget is negative?}
+    C -- Yes --> D[Display invalid budget and stop]
+    C -- No --> E[/Read number of expenses/]
+    E --> F{Number is positive?}
+    F -- No --> G[Display error and stop]
+    F -- Yes --> H[Initialize total and highest]
+    H --> I[/Read next expense/]
+    I --> J{Expense is negative?}
+    J -- Yes --> K[Display error and stop]
+    J -- No --> L[Add expense to total and update highest]
+    L --> M{More expenses?}
+    M -- Yes --> I
+    M -- No --> N[Calculate average]
+    N --> O[Display expense report]
+    O --> P{Total compared with budget}
+    P -- Above --> Q[Display amount exceeded]
+    P -- Below --> R[Display remaining budget]
+    P -- Equal --> S[Display exact-budget message]
+    Q --> T([End])
+    R --> T
+    S --> T
+```
+
 ## Input
 
 - Daily budget (non-negative number)
@@ -46,3 +74,5 @@ Average Expense: Rs. 266.67
 Highest Expense: Rs. 400.00
 Remaining Budget: Rs. 200.00
 ```
+
+The corresponding example output is saved in [`output/output.txt`](output/output.txt).
