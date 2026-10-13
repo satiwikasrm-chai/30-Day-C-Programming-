@@ -1,0 +1,16 @@
+Sample run (illustrative transcript)
+
+Enter your daily budget: 1000
+Enter number of expenses: 3
+Enter expense 1: 250
+Enter expense 2: 400
+Enter expense 3: 150
+
+--- Daily Expense Report ---
+Daily Budget:    Rs. 1000.00
+Total Expenses:  Rs. 800.00
+Average Expense: Rs. 266.67
+Highest Expense: Rs. 400.00
+Remaining Budget: Rs. 200.00
+
+Note: This is a text example, not an execution screenshot.
