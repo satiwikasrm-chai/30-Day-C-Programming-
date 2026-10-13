@@ -7,7 +7,7 @@ int main() {
 
     // Input daily budget
     printf("Enter your daily budget: ");
-    scanf("%lf", &budget);
+    scanf("%f", &budget);
 
     if (budget < 0) {
         printf("Invalid budget!\n");
@@ -45,17 +45,17 @@ int main() {
 
     // Display expense report
     printf("\n--- Daily Expense Report ---\n");
-    printf("Daily Budget:    Rs. %.2f\n", budget);
-    printf("Total Expenses:  Rs. %.2f\n", total);
-    printf("Average Expense: Rs. %.2f\n", average);
-    printf("Highest Expense: Rs. %.2f\n", highest);
+    printf("Daily Budget:    Rs. %f\n", budget);
+    printf("Total Expenses:  Rs. %f\n", total);
+    printf("Average Expense: Rs. %f\n", average);
+    printf("Highest Expense: Rs. %f\n", highest);
 
     // Analyze budget using conditions
     if (total > budget) {
-        printf("Budget exceeded by: Rs. %.2f\n",
+        printf("Budget exceeded by: Rs. %f\n",
                total - budget);
     } else if (total < budget) {
-        printf("Remaining Budget: Rs. %.2f\n",
+        printf("Remaining Budget: Rs. %f\n",
                budget - total);
     } else {
         printf("You spent exactly your budget!\n");
