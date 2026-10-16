@@ -1,0 +1,77 @@
+Captured terminal output from the completed CHALLENGE-05.c program.
+Compiled with GCC 13.2.0 using:
+gcc -std=c11 -Wall -Wextra -pedantic CHALLENGE-05.c -o CHALLENGE-05.exe -lm
+
+The values listed for each session were supplied as keyboard input. When
+standard input is piped into a program, prompts that do not end with a newline
+appear together in the captured output.
+
+--- Main sample session ---
+Input sequence: 1, 2, -6, 2, 5, 3, 1, -3, 2, 4
+
+--- EQUATION SOLVER+ ---
+1. Linear Equation
+2. Factorial
+3. Quadratic Equation
+4. Exit
+Enter your choice:
+Linear Equation: ax + b = 0
+Enter a: Enter b: Answer: x = 3.00
+
+--- EQUATION SOLVER+ ---
+1. Linear Equation
+2. Factorial
+3. Quadratic Equation
+4. Exit
+Enter your choice:
+Factorial Calculator
+Enter a number (0 to 20): Factorial = 120
+
+--- EQUATION SOLVER+ ---
+1. Linear Equation
+2. Factorial
+3. Quadratic Equation
+4. Exit
+Enter your choice:
+Quadratic Equation: ax^2 + bx + c = 0
+Enter a: Enter b: Enter c: First root = 2.00
+Second root = 1.00
+
+--- EQUATION SOLVER+ ---
+1. Linear Equation
+2. Factorial
+3. Quadratic Equation
+4. Exit
+Enter your choice: Program ended. Thank you!
+Program exit code: 0
+
+--- Additional verified cases ---
+
+Factorial input 0:
+Enter a number (0 to 20): Factorial = 1
+
+Factorial input -1:
+Enter a number (0 to 20): Please enter a number from 0 to 20.
+
+Factorial input 21 (outside the supported range):
+Enter a number (0 to 20): Please enter a number from 0 to 20.
+
+Linear input a=0, b=0:
+Enter a: Enter b: Infinite solutions.
+
+Linear input a=0, b=5:
+Enter a: Enter b: No solution.
+
+Quadratic input a=1, b=2, c=1 (repeated root):
+Enter a: Enter b: Enter c: Both roots are equal: -1.00
+
+Quadratic input a=1, b=0, c=1 (negative discriminant):
+Enter a: Enter b: Enter c: No real roots.
+
+Quadratic input a=0, b=2, c=-4 (linear case):
+Enter a: Enter b: Enter c: This is a linear equation.
+Answer: x = 2.00
+
+Invalid menu input "abc":
+Enter your choice: Invalid input. Please enter a menu number.
+Program exit code: 1
