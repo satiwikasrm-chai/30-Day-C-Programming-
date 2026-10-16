@@ -1,4 +1,4 @@
-# CODE2THINK Challenge 05 — Equation Solver+
+# Challenge 05 
 
 ## Project description
 
