@@ -23,7 +23,7 @@ A C program that calculates the discount, delivery charge, and final payable amo
 | More than 5 km and up to 10 km | Rs. 50 |
 | More than 10 km | Rs. 100 |
 
-The program rejects negative, non-numeric, and non-finite purchase amounts or distances. It also accepts only `1` or `2` as a customer type.
+The program rejects negative or non-numeric purchase amounts and distances. It also accepts only `1` or `2` as a customer type.
 
 ## Compile and run
 
