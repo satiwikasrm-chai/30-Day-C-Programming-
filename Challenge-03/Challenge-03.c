@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main(void) {
+int main() {
     double amount, distance;
     double discountRate, discount, deliveryCharge, finalAmount;
     int customerType;
@@ -10,7 +10,7 @@ int main(void) {
     printf("Enter purchase amount: Rs. ");
     if (scanf("%lf", &amount) != 1 || amount < 0) {
         printf("Invalid purchase amount!\n");
-        return 1;
+        return 0;
     }
 
     printf("Customer Type:\n");
@@ -20,13 +20,13 @@ int main(void) {
     if (scanf("%d", &customerType) != 1 ||
         (customerType != 1 && customerType != 2)) {
         printf("Invalid customer type!\n");
-        return 1;
+        return 0;
     }
 
     printf("Enter delivery distance in km: ");
     if (scanf("%lf", &distance) != 1 || distance < 0) {
         printf("Invalid delivery distance!\n");
-        return 1;
+        return 0;
     }
 
     if (customerType == 1) {
