@@ -1,12 +1,9 @@
-#include <ctype.h>
-#include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-/* Reads one decimal value and makes sure the whole line is valid. */
+/* Reads one decimal value and makes sure there are no extra characters. */
 int readDecimal(const char *message, double *value) {
     char input[100];
-    char *end;
+    char extra;
 
     printf("%s", message);
 
@@ -14,24 +11,22 @@ int readDecimal(const char *message, double *value) {
         return 0;
     }
 
-    *value = strtod(input, &end);
-
-    while (isspace((unsigned char)*end)) {
-        end++;
-    }
-
-    if (*value != *value || *value == HUGE_VAL || *value == -HUGE_VAL) {
+    if (sscanf(input, "%lf %c", value, &extra) != 1) {
         return 0;
     }
 
-    return end != input && *end == '\0';
+    /* NaN is not equal to itself. Infinity is unchanged when divided by 2. */
+    if (*value != *value || (*value != 0 && *value == *value / 2)) {
+        return 0;
+    }
+
+    return 1;
 }
 
 /* Reads a customer type without accepting values such as 1.5 or 2abc. */
 int readCustomerType(int *customerType) {
     char input[100];
-    char *end;
-    long value;
+    char extra;
 
     printf("Enter customer type (1 or 2): ");
 
@@ -39,18 +34,11 @@ int readCustomerType(int *customerType) {
         return 0;
     }
 
-    value = strtol(input, &end, 10);
-
-    while (isspace((unsigned char)*end)) {
-        end++;
-    }
-
-    if (end == input || *end != '\0' || (value != 1 && value != 2)) {
+    if (sscanf(input, "%d %c", customerType, &extra) != 1) {
         return 0;
     }
 
-    *customerType = (int)value;
-    return 1;
+    return *customerType == 1 || *customerType == 2;
 }
 
 int main(void) {
