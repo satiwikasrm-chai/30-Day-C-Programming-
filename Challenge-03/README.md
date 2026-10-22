@@ -23,7 +23,7 @@ A C program that calculates the discount, delivery charge, and final payable amo
 | More than 5 km and up to 10 km | Rs. 50 |
 | More than 10 km | Rs. 100 |
 
-The program rejects negative purchase amounts or distances and customer types other than `1` or `2`.
+The program rejects negative, non-numeric, and non-finite purchase amounts or distances. It also accepts only `1` or `2` as a customer type.
 
 ## Compile and run
 
@@ -42,7 +42,7 @@ On Windows, run the compiled program with:
 
 ## Sample run
 
-Enter `2500` for the purchase amount, `2` for Premium Customer, and `8` for the delivery distance in km. The program displays floating-point values with six digits after the decimal point because the source uses `%f`.
+Enter `2500` for the purchase amount, `2` for Premium Customer, and `8` for the delivery distance in km. Monetary values are displayed with two digits after the decimal point.
 
 ```text
 ===== SMARTCART =====
@@ -54,11 +54,11 @@ Enter customer type (1 or 2): 2
 Enter delivery distance in km: 8
 
 ===== BILL SUMMARY =====
-Purchase Amount : Rs. 2500.000000
-Discount Rate   : 20.000000
-Discount Amount : Rs. 500.000000
-Delivery Charge : Rs. 50.000000
-Final Payable   : Rs. 2050.000000
+Purchase Amount : Rs. 2500.00
+Discount Rate   : 20%
+Discount Amount : Rs. 500.00
+Delivery Charge : Rs. 50.00
+Final Payable   : Rs. 2050.00
 ```
 
 For these inputs, the premium customer receives a 20% discount (Rs. 500), and the 8 km delivery charge is Rs. 50. The final payable amount is Rs. 2,050.
