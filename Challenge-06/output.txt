@@ -21,6 +21,6 @@ Longest increasing run: 2
 
 Enter K for rotation: 2
 Rotated readings: 40 35 10 20 15 30 25
-Enter the last two digits of registration number (0 to 99): 42
+Enter last two digits of registration number: 42
 Divisor D: 7
 Values divisible by D: 1

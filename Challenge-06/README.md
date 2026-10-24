@@ -4,8 +4,9 @@ A beginner-friendly C program that studies a list of smart-campus activity readi
 
 ## What the program does
 
-- Reads 5 to 12 activity readings.
-- Checks that every reading is from 0 to 1000.
+- Reads the number of activity readings, from 5 to 12.
+- Uses `while` loops to ask again when a numeric value is outside the allowed range.
+- Stores the readings in an integer array named `a`.
 - Displays the original readings, sum, average, minimum, and maximum.
 - Finds the second-largest distinct value.
 - Counts local peaks.
@@ -13,29 +14,35 @@ A beginner-friendly C program that studies a list of smart-campus activity readi
 - Rotates the same array right by `K` positions. A negative `K` rotates left.
 - Calculates `D = (R % 9) + 1` using the last two registration-number digits and counts the rotated values divisible by `D`.
 
-The code uses one array only. The rotation is performed in place, without a second array or sorting.
+The code uses one array only. The rotation is performed in place with the `temp` variable, without a second array or sorting.
 
 ## Algorithm
 
-1. Read `N`. Keep asking until it is between 5 and 12.
-2. Use a loop to read `N` activity readings. Keep asking for a reading until it is between 0 and 1000.
+1. Read `n`. Use a `while` loop to keep asking until it is between 5 and 12.
+2. Use a `for` loop to read `n` activity readings into `a`. Use a `while` loop to keep asking until each reading is between 0 and 1000.
 3. Display the original readings.
 4. Use a loop to find the sum, minimum, and maximum.
 5. Use another loop to find the largest value that is different from the maximum. This is the second-largest distinct value.
 6. Check every middle value with its left and right neighbour to count local peaks.
 7. Compare every value with the previous value to find the longest increasing contiguous run.
-8. Read `K`, then use `K % N` to keep the number of rotations between 0 and `N - 1`. If `K` is negative, add `N` so that it becomes a right rotation.
+8. Read `k`, then use `k % n` to keep the number of rotations between 0 and `n - 1`. If `k` is negative, add `n` so that it becomes a right rotation.
 9. Rotate the original array in place. For each shift, move the last value to the first position.
-10. Read the last two registration-number digits, calculate `D = (R % 9) + 1`, and count the rotated values divisible by `D`.
+10. Read `r`, the last two registration-number digits, calculate `d = (r % 9) + 1`, and count the rotated values divisible by `d`.
 
 ## Pseudocode
 
 ```text
 START
-Read N until 5 <= N <= 12
+Read n
+WHILE n is less than 5 or greater than 12
+    Read n again
+END WHILE
 
-FOR each reading from 0 to N - 1
-    Read reading until 0 <= reading <= 1000
+FOR each reading from 0 to n - 1
+    Read a[i]
+    WHILE a[i] is less than 0 or greater than 1000
+        Read a[i] again
+    END WHILE
 END FOR
 
 Find sum, minimum, and maximum
@@ -44,13 +51,13 @@ Count local peaks
 Find longest increasing contiguous run
 
 Read K
-Set K = K % N
-If K is negative, add N to K
-Rotate the array right by K positions
+Set k = k % n
+If k is negative, add n to k
+Rotate a right by k positions using temp
 
-Read R
-Set D = (R % 9) + 1
-Count rotated values divisible by D
+Read r
+Set d = (r % 9) + 1
+Count rotated values divisible by d
 Display all results
 END
 ```
@@ -62,16 +69,16 @@ flowchart TD
     A([Start]) --> B[Read N]
     B --> C{Is N from 5 to 12}
     C -- No --> B
-    C -- Yes --> D[Read N valid readings]
+    C -- Yes --> D[Read n readings into array a]
     D --> E[Display original readings]
     E --> F[Find sum average minimum and maximum]
     F --> G[Find second-largest distinct value]
     G --> H[Count local peaks]
     H --> I[Find longest increasing run]
-    I --> J[Read K and normalize it]
-    J --> K[Rotate the same array right by K]
-    K --> L[Read R and calculate D]
-    L --> M[Count values divisible by D]
+    I --> J[Read k and normalize it]
+    J --> K[Rotate array a right using temp]
+    K --> L[Read r and calculate d]
+    L --> M[Count values divisible by d]
     M --> N[Display results]
     N --> O([End])
 ```
