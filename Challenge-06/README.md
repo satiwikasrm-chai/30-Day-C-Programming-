@@ -17,11 +17,64 @@ The code uses one array only. The rotation is performed in place, without a seco
 
 ## Algorithm
 
-1. Read a valid number of readings and then read every valid activity value.
-2. Use loops to calculate the sum, minimum, maximum, peaks, and increasing run.
-3. Find the second-largest value that is different from the maximum.
-4. Convert `K` to a value between `0` and `N - 1`, then move the last value to the front one step at a time.
-5. Calculate `D` and count the rotated values that are divisible by it.
+1. Read `N`. Keep asking until it is between 5 and 12.
+2. Use a loop to read `N` activity readings. Keep asking for a reading until it is between 0 and 1000.
+3. Display the original readings.
+4. Use a loop to find the sum, minimum, and maximum.
+5. Use another loop to find the largest value that is different from the maximum. This is the second-largest distinct value.
+6. Check every middle value with its left and right neighbour to count local peaks.
+7. Compare every value with the previous value to find the longest increasing contiguous run.
+8. Read `K`, then use `K % N` to keep the number of rotations between 0 and `N - 1`. If `K` is negative, add `N` so that it becomes a right rotation.
+9. Rotate the original array in place. For each shift, move the last value to the first position.
+10. Read the last two registration-number digits, calculate `D = (R % 9) + 1`, and count the rotated values divisible by `D`.
+
+## Pseudocode
+
+```text
+START
+Read N until 5 <= N <= 12
+
+FOR each reading from 0 to N - 1
+    Read reading until 0 <= reading <= 1000
+END FOR
+
+Find sum, minimum, and maximum
+Find second-largest distinct value
+Count local peaks
+Find longest increasing contiguous run
+
+Read K
+Set K = K % N
+If K is negative, add N to K
+Rotate the array right by K positions
+
+Read R
+Set D = (R % 9) + 1
+Count rotated values divisible by D
+Display all results
+END
+```
+
+## Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B[Read N]
+    B --> C{Is N from 5 to 12}
+    C -- No --> B
+    C -- Yes --> D[Read N valid readings]
+    D --> E[Display original readings]
+    E --> F[Find sum average minimum and maximum]
+    F --> G[Find second-largest distinct value]
+    G --> H[Count local peaks]
+    H --> I[Find longest increasing run]
+    I --> J[Read K and normalize it]
+    J --> K[Rotate the same array right by K]
+    K --> L[Read R and calculate D]
+    L --> M[Count values divisible by D]
+    M --> N[Display results]
+    N --> O([End])
+```
 
 ## Compile and run
 
