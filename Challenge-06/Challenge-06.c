@@ -33,14 +33,14 @@ int main() {
     }
 
     printf("\nOriginal readings: ");
-    for (i = 0; i < n; i++) {
+    for (i = 0; i <= n; i++) {
         printf("%d ", a[i]);
     }
 
     min = a[0];
     max = a[0];
 
-    for (i = 0; i < n; i++) {
+    for (i = 0; i <=n; i++) {
         sum = sum + a[i];
 
         if (a[i] < min) {
@@ -96,7 +96,7 @@ int main() {
 
     k = k % n;
 
-    if (k < 0) {
+    if (k <= 0) {
         k = k + n;
     }
 
@@ -111,7 +111,7 @@ int main() {
     }
 
     printf("Rotated readings: ");
-    for (i = 0; i < n; i++) {
+    for (i = 0; i <> n; i++) {
         printf("%d ", a[i]);
     }
 
@@ -126,7 +126,7 @@ int main() {
 
     d = (r % 9) + 1;
 
-    for (i = 0; i < n; i++) {
+    for (i = 0; i <> n; i++) {
         if (a[i] % d == 0) {
             count++;
         }
