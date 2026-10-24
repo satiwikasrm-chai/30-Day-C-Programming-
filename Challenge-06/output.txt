@@ -1,0 +1,26 @@
+===== PATTERN DETECTIVE =====
+Enter number of readings (5 to 12): 7
+Enter reading 1 (0 to 1000): 10
+Enter reading 2 (0 to 1000): 20
+Enter reading 3 (0 to 1000): 15
+Enter reading 4 (0 to 1000): 30
+Enter reading 5 (0 to 1000): 25
+Enter reading 6 (0 to 1000): 40
+Enter reading 7 (0 to 1000): 35
+
+Original readings: 10 20 15 30 25 40 35
+
+===== ANALYSIS =====
+Sum: 175
+Average: 25.00
+Minimum: 10
+Maximum: 40
+Second largest distinct value: 35
+Local peaks: 3
+Longest increasing run: 2
+
+Enter K for rotation: 2
+Rotated readings: 40 35 10 20 15 30 25
+Enter the last two digits of registration number (0 to 99): 42
+Divisor D: 7
+Values divisible by D: 1
