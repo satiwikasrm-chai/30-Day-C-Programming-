@@ -1,128 +1,98 @@
 #include <stdio.h>
 
 int main() {
-    int readings[12];
+    int a[12];
     int n, i, j;
-    int sum = 0;
-    int minimum, maximum;
-    int secondLargest, secondFound = 0;
-    int peakCount = 0;
-    int currentRun = 1, longestRun = 1;
-    int k, lastValue;
-    int registrationNumber, divisor, divisibleCount = 0;
-    int input;
+    int sum = 0, min, max;
+    int second = -1;
+    int peaks = 0;
+    int run = 1, longest = 1;
+    int k, temp;
+    int r, d, count = 0;
 
     printf("===== PATTERN DETECTIVE =====\n");
 
-    /* Read the number of activity readings. */
-    while (1) {
+    printf("Enter number of readings (5 to 12): ");
+    scanf("%d", &n);
+
+    while (n < 5 || n > 12) {
+        printf("Invalid input. Try again.\n");
         printf("Enter number of readings (5 to 12): ");
-        input = scanf("%d", &n);
-
-        if (input == 1 && n >= 5 && n <= 12) {
-            break;
-        }
-
-        printf("Invalid input. Please enter a number from 5 to 12.\n");
-
-        while (getchar() != '\n') {
-        }
+        scanf("%d", &n);
     }
 
-    /* Read every activity value. */
     for (i = 0; i < n; i++) {
-        while (1) {
+        printf("Enter reading %d (0 to 1000): ", i + 1);
+        scanf("%d", &a[i]);
+
+        while (a[i] < 0 || a[i] > 1000) {
+            printf("Invalid input. Try again.\n");
             printf("Enter reading %d (0 to 1000): ", i + 1);
-            input = scanf("%d", &readings[i]);
-
-            if (input == 1 && readings[i] >= 0 && readings[i] <= 1000) {
-                break;
-            }
-
-            printf("Invalid input. Please enter a number from 0 to 1000.\n");
-
-            while (getchar() != '\n') {
-            }
+            scanf("%d", &a[i]);
         }
     }
 
     printf("\nOriginal readings: ");
     for (i = 0; i < n; i++) {
-        printf("%d ", readings[i]);
+        printf("%d ", a[i]);
     }
 
-    /* Find the sum, minimum, and maximum. */
-    minimum = readings[0];
-    maximum = readings[0];
+    min = a[0];
+    max = a[0];
 
     for (i = 0; i < n; i++) {
-        sum = sum + readings[i];
+        sum = sum + a[i];
 
-        if (readings[i] < minimum) {
-            minimum = readings[i];
+        if (a[i] < min) {
+            min = a[i];
         }
 
-        if (readings[i] > maximum) {
-            maximum = readings[i];
+        if (a[i] > max) {
+            max = a[i];
         }
     }
 
-    /* Find the second-largest value that is different from maximum. */
     for (i = 0; i < n; i++) {
-        if (readings[i] != maximum) {
-            if (secondFound == 0 || readings[i] > secondLargest) {
-                secondLargest = readings[i];
-                secondFound = 1;
-            }
+        if (a[i] != max && a[i] > second) {
+            second = a[i];
         }
     }
 
     for (i = 1; i < n - 1; i++) {
-        if (readings[i] > readings[i - 1] && readings[i] > readings[i + 1]) {
-            peakCount++;
+        if (a[i] > a[i - 1] && a[i] > a[i + 1]) {
+            peaks++;
         }
     }
 
     for (i = 1; i < n; i++) {
-        if (readings[i] > readings[i - 1]) {
-            currentRun++;
+        if (a[i] > a[i - 1]) {
+            run++;
         } else {
-            currentRun = 1;
+            run = 1;
         }
 
-        if (currentRun > longestRun) {
-            longestRun = currentRun;
+        if (run > longest) {
+            longest = run;
         }
     }
 
     printf("\n===== ANALYSIS =====\n");
     printf("Sum: %d\n", sum);
     printf("Average: %.2f\n", (float)sum / n);
-    printf("Minimum: %d\n", minimum);
-    printf("Maximum: %d\n", maximum);
+    printf("Minimum: %d\n", min);
+    printf("Maximum: %d\n", max);
 
-    if (secondFound == 1) {
-        printf("Second largest distinct value: %d\n", secondLargest);
-    } else {
+    if (second == -1) {
         printf("Second largest distinct value: Not available\n");
+    } else {
+        printf("Second largest distinct value: %d\n", second);
     }
 
-    printf("Local peaks: %d\n", peakCount);
-    printf("Longest increasing run: %d\n", longestRun);
+    printf("Local peaks: %d\n", peaks);
+    printf("Longest increasing run: %d\n", longest);
 
-    while (1) {
-        printf("\nEnter K for rotation: ");
-        input = scanf("%d", &k);
-
-        if (input == 1) {
-            break;
-        }
-
-        printf("Invalid input. Please enter an integer.\n");
-
-        while (getchar() != '\n') {
-        }
-    }
+    printf("\nEnter K for rotation: ");
+    scanf("%d", &k);
 
     k = k % n;
 
@@ -130,46 +100,40 @@ int main() {
         k = k + n;
     }
 
-    /* Rotate right by moving the last value to the front. */
     for (i = 0; i < k; i++) {
-        lastValue = readings[n - 1];
+        temp = a[n - 1];
 
         for (j = n - 1; j > 0; j--) {
-            readings[j] = readings[j - 1];
+            a[j] = a[j - 1];
         }
 
-        readings[0] = lastValue;
+        a[0] = temp;
     }
 
     printf("Rotated readings: ");
     for (i = 0; i < n; i++) {
-        printf("%d ", readings[i]);
+        printf("%d ", a[i]);
     }
 
-    while (1) {
-        printf("\nEnter the last two digits of registration number (0 to 99): ");
-        input = scanf("%d", &registrationNumber);
+    printf("\nEnter last two digits of registration number: ");
+    scanf("%d", &r);
 
-        if (input == 1 && registrationNumber >= 0 && registrationNumber <= 99) {
-            break;
-        }
-
-        printf("Invalid input. Please enter a number from 0 to 99.\n");
-
-        while (getchar() != '\n') {
-        }
+    while (r < 0 || r > 99) {
+        printf("Invalid input. Try again.\n");
+        printf("\nEnter last two digits of registration number: ");
+        scanf("%d", &r);
     }
 
-    divisor = (registrationNumber % 9) + 1;
+    d = (r % 9) + 1;
 
     for (i = 0; i < n; i++) {
-        if (readings[i] % divisor == 0) {
-            divisibleCount++;
+        if (a[i] % d == 0) {
+            count++;
         }
     }
 
-    printf("Divisor D: %d\n", divisor);
-    printf("Values divisible by D: %d\n", divisibleCount);
+    printf("Divisor D: %d\n", d);
+    printf("Values divisible by D: %d\n", count);
 
     return 0;
 }
