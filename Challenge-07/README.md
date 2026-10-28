@@ -65,11 +65,3 @@ On Windows after compiling:
 | Reverse order | `4`: `4 3 2 1` | `1` | No duplicate or missing ID, 6 out-of-order pairs, personal count 1 |
 | Multiple duplicate values | `6`: `1 1 3 3 5 6` | `3` | Duplicates `1` and `3`, missing `2` and `4`, personal count 2 |
 
-## Student testing evidence — complete before submission
-
-- [ ] I ran the program with my own registration-number last two digits: `__`
-- [ ] I recorded the actual output for the official sample input: `________________`
-- [ ] I traced one duplicate-ID case by hand: `________________`
-- [ ] I traced one missing-ID case by hand: `________________`
-- [ ] I can explain why the out-of-order-pair loops use `j = i + 1`: `________________`
-- [ ] I checked the official Challenge_07.docx and adapted any assumptions above: `________________`
